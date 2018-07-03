@@ -14,7 +14,6 @@ try {
 export default function(state = initialState, { type, payload }) {
   switch (type) {
     case USER_LOGIN_SUCCESS:
-      console.log("do you see me?");
       return payload;
 
     case USER_LOGOUT:

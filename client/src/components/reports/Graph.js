@@ -83,7 +83,6 @@ class Graph extends Component {
     sortedData.map(el => {
       el.change = parseInt(el.change)
     })
-    console.log('sorted',sortedData)
     return (
       <div>
         <Paper style={{width:'55em', margin:'0 auto', height:'33em'}}>

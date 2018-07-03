@@ -37,7 +37,6 @@ export default class DatabaseController {
     @Body() update: Partial<Database>
   ) {
     const database = await Database.findOne(id);
-    console.log(id, "THIS IS THE ID");
     if (!database) throw new NotFoundError("Database not found.");
     await Database.merge(database, update).save();
     const databases = await Database.find();

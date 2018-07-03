@@ -8,7 +8,6 @@ export const UPDATE_CSV = "UPDATE_CSV";
 export const NEW_COMPANIES = "NEW_COMPANIES";
 
 export const updateCSV = payload => {
-  // console.log(payload, "THIS IS THE PAYLOAD COMING TO ACTION");
   return {
     type: UPDATE_CSV,
     payload: payload
@@ -56,17 +55,13 @@ export const changeCell = (databaseId, updates) => (dispatch, getState) => {
 
 export const companiesToAdd = payload => dispatch => {
   Object.keys(payload).map(company => {
-    // console.log(company, "THIS IS IN ACTION CREATOR");
-    console.log("ITERATION NUMBER: ", company)
     const companyToAdd = csvToDb(payload[company]);
-    console.log(companyToAdd, "COMPANY TO ADD")
     if(company == payload.length-1){
     request
       .post(`${baseUrl}/databases`)
       //.set("Authorization", `Bearer ${jwt}`)
       .send(companyToAdd)
       .then(response => {
-        console.log(response,"RESPONSE")
         dispatch({
           type: NEW_COMPANIES,
           payload: response.body.databases
@@ -74,14 +69,4 @@ export const companiesToAdd = payload => dispatch => {
       })
       .catch(err => console.log(err));
   }});
-  // console.log(payload, "THIS IS THE NEW COMPANIES COMING TO THE ACTION");
-  // return {
-  //   type: NEW_COMPANIES,
-  //   payload: payload
-  // };
 };
-
-// export const addCompany = company => {
-//   const companyToAdd = csvToDb(company);
-
-// };

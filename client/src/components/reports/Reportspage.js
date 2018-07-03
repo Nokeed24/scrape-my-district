@@ -131,8 +131,6 @@ class Reports extends Component {
   };
 
   render() {
-    console.log(this.state, "This state");
-    console.log(this.props, "This props");
     return (
       <div>
         <Button onClick={() => this.setRenderAll()}>Fetch all updates</Button>
@@ -182,7 +180,6 @@ class Reports extends Component {
                   }
                   {this.state.filtered &&
                     this.state.filtered.map((update, i) => {
-                      console.log(update.timestamp.slice(0, 10))
                       return (
                         <Card key={`${i} ${update.company}`} className='dataCard dataList' >
                           <h1>{update.company}</h1>
